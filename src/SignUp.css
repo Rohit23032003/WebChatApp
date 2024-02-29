@@ -1,0 +1,56 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.SignUpLoginMainDiv{
+    margin: auto;
+    width: 25rem;
+    padding: 2rem;
+    height: fit-content;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 2rem;
+}
+
+.InputValueDiv{
+    margin: 0.35rem;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* This ensures that the container takes the full height of the viewport */
+    background-color:blue; 
+}
+
+.BtnDiv{
+    margin: 0.35rem;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#SignUpBtn{
+    padding: 0.35rem;
+    margin: 0.71rem;
+    border-radius: 0.25rem;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.btn-blue{
+    background-color: blue;
+}
+
+.btn-white{
+    background-color: none;
+}
+    
+.Error_Field{
+    color: red;
+}
