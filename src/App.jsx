@@ -45,12 +45,15 @@ function App() {
     socket.on('welcome',(data)=>{
       console.log(data);
     });
-    socket.on("message-received",(data)=>{
+    socket.on("msesage-received",(data)=>{
       // console.log(data);
       setMessages((messages) => ([...messages , {chat:data.message , senderId:data.senderId}]));
     })
 
   },[])
+
+
+  
   return (
     <>
      <input type='text' placeholder='Enter roomName ' 
