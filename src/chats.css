@@ -1,0 +1,121 @@
+
+.mainContainer{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+ .Conatiner {
+    height: 90vh;
+    width: 80vw;
+    margin: auto;
+    border: 2px solid red;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.usersContainer {
+    border: 2px solid black;
+    margin: 1rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    width: 17vw;
+    overflow: auto;
+}
+
+.chatsContainer {
+    border: 2px solid blue;
+    margin: 1rem;
+    margin-left: 0;
+    display: flex;
+    flex-direction: column; /* Change to column */
+    flex: 1; /* Take remaining width */
+}
+
+.inputAndSend {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: flex-end; /* Align items horizontally at the end */
+    padding: 0.5rem; /* Adjust padding as needed */
+}
+
+.inputAndSend input {
+    flex: 1; /* Take remaining width */
+    margin-right: 0.5rem; /* Add some space between input and button */
+}
+
+.userChats {
+    height: 100vh;
+    border: 2px solid black;
+    box-sizing: border-box;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Add scrollbar when content exceeds container height */
+}
+
+.chatText{
+    width: 30vw;
+    margin: 0.25rem;
+    border: 2px solid red;
+}
+
+.sender {
+    align-self: flex-end;
+}
+
+.receiver{
+    align-self: flex-start;
+}
+
+.perticularUser{
+    border: 2px solid red;
+    margin: 0.5rem 0.1rem 0.5rem 0.1rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+}
+
+
+.perticularUserText {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.userImage{
+    height: 2.5rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+
+
+
+/* Hide scrollbar */
+.usersContainer::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    border-radius: 50%; /* Border radius of the scrollbar */
+}
+
+/* Track */
+.usersContainer::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+/* Handle */
+.usersContainer::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+    border-radius: 2px; /* Border radius of the scrollbar handle */
+}
+
+/* Handle on hover */
+.usersContainer::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}

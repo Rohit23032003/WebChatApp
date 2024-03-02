@@ -50,6 +50,7 @@ const SignUp = () => {
                 const response = await axios.post('http://localhost:8000/user', user, {
                     withCredentials: true
                 });
+                console.log(response);
                 console.log(response.data.newUser._id);
                 if(response.data.success){
                     const id = response.data.newUser._id;
