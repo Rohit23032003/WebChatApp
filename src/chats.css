@@ -7,19 +7,24 @@
     justify-content: center;
 }
 
+*{
+    border-radius: 0.75rem;
+    background-color: white;
+}
 
  .Conatiner {
     height: 90vh;
     width: 80vw;
     margin: auto;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     border-radius: 2rem;
     display: flex;
+    background-color: #D33852;
     flex-direction: row;
 }
 
 .usersContainer {
-    border: 2px solid black;
+    /* border: 2px solid black; */
     margin: 1rem;
     padding: 1rem;
     box-sizing: border-box;
@@ -28,7 +33,7 @@
 }
 
 .chatsContainer {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     margin: 1rem;
     margin-left: 0;
     display: flex;
@@ -37,15 +42,35 @@
 }
 
 .inputAndSend {
+    height: 3.5rem;
+    box-sizing: border-box;
     display: flex;
     align-items: center; /* Align items vertically */
     justify-content: flex-end; /* Align items horizontally at the end */
     padding: 0.5rem; /* Adjust padding as needed */
 }
 
-.inputAndSend input {
+.inputAndSend #MessageInputFields {
     flex: 1; /* Take remaining width */
     margin-right: 0.5rem; /* Add some space between input and button */
+}
+
+#MessageInputFields{
+    height: 2rem;
+    border: 2px solid #D33852;
+    outline: none;
+    border-radius: 1rem;
+    box-sizing: border-box;
+    padding: 0.5rem;    
+}
+
+#SendMessageBtn{
+    padding: 0.35rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    background-color: #D33852;
+    color: #fff;
 }
 
 .userChats {
@@ -53,38 +78,61 @@
     border: 2px solid black;
     box-sizing: border-box;
     padding: 1rem;
+    background-color: #fff7f8;
     display: flex;
     flex-direction: column;
     overflow-y: auto; /* Add scrollbar when content exceeds container height */
 }
 
 .chatText{
-    width: 30vw;
+    width: 25vw;
     margin: 0.25rem;
-    border: 2px solid red;
+    /* border: 2px solid red; */
+    border-radius: 1rem;
+    padding: 0.45rem;
+    white-space: normal;
+    word-wrap: break-word; 
 }
 
-.sender {
+.sender{
     align-self: flex-end;
+    background-color: #D33852;
+    color: #fff;
+    font-size: 1.15rem;
+    font-family: 'Courier New', Courier, monospace;
+    border: none;
 }
 
 .receiver{
+    border: 2px solid #D33852;
+    color: #D33852;
+    font-size: 1.25rem;
     align-self: flex-start;
 }
 
 .perticularUser{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     margin: 0.5rem 0.1rem 0.5rem 0.1rem;
     box-sizing: border-box;
+    background-color: #f5cfd3;
     overflow: hidden;
     height: 2.5rem;
     display: flex;
     align-items: center;
 }
 
+.receiverUser{
+    height: 3rem;
+    padding-left: 1rem;
+    /* border: 2px solid red; */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
 
-.perticularUserText {
+.perticularUserName {
     overflow: hidden;
+    background: transparent;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
@@ -92,7 +140,8 @@
 .userImage{
     height: 2.5rem;
     margin-left: 0.25rem;
-    margin-right: 0.25rem;
+    margin-right: 0.4rem;
+    border-radius: 50%;
 }
 
 
@@ -106,7 +155,7 @@
 
 /* Track */
 .usersContainer::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Color of the scrollbar track */
+    background:transparent; /* Color of the scrollbar track */
 }
 
 /* Handle */

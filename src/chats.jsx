@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState , useRef} from "react";
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import { io } from 'socket.io-client';
@@ -14,6 +14,14 @@ const ChatPage = () => {
     const { Id } = useParams();
     const senderId = Id.slice(1);
     const [message, setMessage] = useState("");
+    const [receiverUserName , setReceiverUserName] = useState(""); 
+    const userChatsRef = useRef(null);
+
+    useEffect(() => {
+        if (userChatsRef.current) {
+            userChatsRef.current.scrollTop = userChatsRef.current.scrollHeight;
+        }
+    }, [chats]);
 
 
     useEffect(() => {
@@ -83,7 +91,10 @@ const ChatPage = () => {
             if (response.data.success) {
                 const msg = response.data.newChat;
                 setChats(chats => [...chats, msg]);
-                socket.emit('sendingMessage', {msg });
+               if(msg.senderId !== msg.receiverId) {
+                // console.log(msg.senderId , " " , msg.re);
+                    socket.emit('sendingMessage', {msg});
+               }
             }
             setMessage(""); // Clear message input
         } catch (error) {
@@ -91,10 +102,12 @@ const ChatPage = () => {
         }
     };
 
-    const handleUserClick = (e , id) => 
+    const handleUserClick = (e , id , name) => 
     {
         e.preventDefault();
         setReceiverId(id)
+        console.log(name);
+        setReceiverUserName(name);
         const receiveId = id;
         const sendId = senderId;
         console.log("receiveId ", receiveId , " sendId " , sendId);
@@ -108,12 +121,12 @@ const ChatPage = () => {
                 <div className="usersContainer">
                     {users.map(user => (
                         <div className = "perticularUser" key={user._id} onClick={(e) => {
-                            handleUserClick(e,user._id);
+                            handleUserClick(e,user._id , user.userName);
                             }}>
                                 <img  src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoYalG0iZwdwwSFMhNL4aDADjcSJFcuo31Y9OY6saF8ZG5dq3lLc8uXw0eJfUwvdwjTw&usqp=CAU"
                                     className="userImage"
                                 />
-                                <div className="perticularUserText">
+                                <div className="perticularUserName">
                                     {user._id + " " + user.userName}
                                 </div>
                         </div>
@@ -123,19 +136,28 @@ const ChatPage = () => {
             
                 <br /><br />
                 <div className="chatsContainer">
-                    <div className="userChats">
+                    <div className="receiverUser">
+                        <img  src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoYalG0iZwdwwSFMhNL4aDADjcSJFcuo31Y9OY6saF8ZG5dq3lLc8uXw0eJfUwvdwjTw&usqp=CAU"
+                                    className="userImage"
+                                /> 
+                         <span>{receiverUserName}</span>                          
+                    </div>
+                    <div className="userChats" ref={userChatsRef}>
                         {chats.map((chat, index) => (
-                            <div className={`chatText ${senderId == chat.senderId?'sender':'receiver'}`}  key={index}>{`${chat.message} from ${senderId} to ${receiverId}`}</div>
+                            <div className={`chatText ${senderId == chat.senderId?'sender':'receiver'}`}  key={index}>
+                                {`${chat.message}`}
+                            </div>
                         ))}
                     </div>
                         <div className="inputAndSend">
                             <input
+                                id="MessageInputFields"
                                 type="text"
                                 value={message}
                                 placeholder="Type message"
                                 onChange={(e) => setMessage(e.target.value)}
                             />
-                            <button onClick={sendMessage}>Send</button>
+                            <button onClick={sendMessage}  id="SendMessageBtn" >Send</button>
                         </div>
                 </div>
             </div>
