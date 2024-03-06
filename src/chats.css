@@ -1,39 +1,38 @@
-
 .mainContainer{
     height: 100vh;
     width: 100vw;
+    background-color: #323851;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-*{
-    border-radius: 0.75rem;
-    background-color: white;
-}
 
- .Conatiner {
+.Container {
     height: 90vh;
     width: 80vw;
     margin: auto;
-    /* border: 2px solid red; */
     border-radius: 2rem;
     display: flex;
-    background-color: #D33852;
+    background-color: #2b3045;
     flex-direction: row;
 }
 
 .usersContainer {
-    /* border: 2px solid black; */
+    font-family: 'Madimi One';
+    font-size: 1rem;
+    color: white;
     margin: 1rem;
-    padding: 1rem;
+    padding: 0.25rem;
+    background-color: #74767e;
+    border-radius: 0.5rem;
+    border: 3px solid #434652;
     box-sizing: border-box;
     width: 17vw;
     overflow: auto;
 }
 
 .chatsContainer {
-    /* border: 2px solid blue; */
     margin: 1rem;
     margin-left: 0;
     display: flex;
@@ -43,6 +42,7 @@
 
 .inputAndSend {
     height: 3.5rem;
+    background-color: #2b3045;
     box-sizing: border-box;
     display: flex;
     align-items: center; /* Align items vertically */
@@ -57,9 +57,9 @@
 
 #MessageInputFields{
     height: 2rem;
-    border: 2px solid #D33852;
+    border: 2px solid #5a5f75;
     outline: none;
-    border-radius: 1rem;
+    border-radius: 0.35rem;
     box-sizing: border-box;
     padding: 0.5rem;    
 }
@@ -69,44 +69,47 @@
     font-size: 1rem;
     border-radius: 0.25rem;
     border: none;
+    font-family: 'Madimi One';
+    font-size: 1rem;
+    color: white;
     background-color: #D33852;
     color: #fff;
+    cursor: pointer;
 }
 
 .userChats {
     height: 100vh;
-    border: 2px solid black;
+    border: 3px solid #434652;
+    background-color: #74767e;
     box-sizing: border-box;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
     padding: 1rem;
-    background-color: #fff7f8;
     display: flex;
     flex-direction: column;
     overflow-y: auto; /* Add scrollbar when content exceeds container height */
 }
 
 .chatText{
+    font-family:'PT Sans Narrow';
     width: 25vw;
     margin: 0.25rem;
-    /* border: 2px solid red; */
     border-radius: 1rem;
     padding: 0.45rem;
     white-space: normal;
     word-wrap: break-word; 
+    color: white;
+    font-size: 1.15rem;
 }
 
 .sender{
     align-self: flex-end;
-    background-color: #D33852;
-    color: #fff;
-    font-size: 1.15rem;
-    font-family: 'Courier New', Courier, monospace;
-    border: none;
+    background-color: #4b5ebb;
+
 }
 
 .receiver{
-    border: 2px solid #D33852;
-    color: #D33852;
-    font-size: 1.25rem;
+    background-color:#24283a;
     align-self: flex-start;
 }
 
@@ -114,18 +117,27 @@
     /* border: 2px solid red; */
     margin: 0.5rem 0.1rem 0.5rem 0.1rem;
     box-sizing: border-box;
-    background-color: #f5cfd3;
     overflow: hidden;
     height: 2.5rem;
     display: flex;
+    padding: 0.75rem;
     align-items: center;
+    cursor: pointer;
 }
 
 .receiverUser{
     height: 3rem;
-    padding-left: 1rem;
-    /* border: 2px solid red; */
+    padding: 1.5rem;
+    font-family: 'Madimi One';
+    font-size: 1rem;
+    color: white;
+    border: 3px solid #434652;
+    border-bottom: 0;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    background-color: #2b3045;
     box-sizing: border-box;
+    color: white;
     display: flex;
     align-items: center;
 }
@@ -140,11 +152,16 @@
 .userImage{
     height: 2.5rem;
     margin-left: 0.25rem;
+    border: 3px solid  #4b5ebb;
+    border: 3px solid  white;
+    box-sizing: border-box;
     margin-right: 0.4rem;
     border-radius: 50%;
 }
 
-
+.DivideUserLine{
+    border-bottom: 1.25px solid #2b3045;
+}
 
 
 /* Hide scrollbar */
@@ -160,7 +177,7 @@
 
 /* Handle */
 .usersContainer::-webkit-scrollbar-thumb {
-    background: #888; /* Color of the scrollbar handle */
+    background: #323851; /* Color of the scrollbar handle */
     border-radius: 2px; /* Border radius of the scrollbar handle */
 }
 
@@ -168,3 +185,59 @@
 .usersContainer::-webkit-scrollbar-thumb:hover {
     background: #555; /* Color of the scrollbar handle on hover */
 }
+
+
+.userChats::-webkit-scrollbar {
+    width: 0.51rem; /* Width of the scrollbar */
+    border-radius: 50%; /* Border radius of the scrollbar */
+}
+
+/* Track */
+.userChats::-webkit-scrollbar-track {
+    background:transparent; /* Color of the scrollbar track */
+}
+
+/* Handle */
+.userChats::-webkit-scrollbar-thumb {
+    background: #323851; /* Color of the scrollbar handle */
+    border-radius: 2px; /* Border radius of the scrollbar handle */
+}
+
+/* Handle on hover */
+.userChats::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
+
+
+
+
+/* phones */
+
+
+@media only screen and (max-width : 767px){
+    .Container{
+        height: 100%;
+        width: 100%;
+        padding: 1rem;
+        position: relative;
+    }
+    .usersContainer {
+        width: 33%; /* Set the width to 33% */
+        height: 95vh;
+        left: 0;
+        position: absolute;
+    }
+}
+
+/* laptops */
+
+@media only screen and (max-width : 1023px){
+    .Container{
+        height: 100vh;
+        width: 100vw;
+    }
+    .usersContainer{
+        width: 25vw;
+    }
+}
+

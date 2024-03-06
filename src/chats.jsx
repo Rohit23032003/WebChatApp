@@ -117,19 +117,27 @@ const ChatPage = () => {
 
     return (
         <div className="mainContainer">
-            <div className="Conatiner">
+            <div className="Container">
                 <div className="usersContainer">
-                    {users.map(user => (
-                        <div className = "perticularUser" key={user._id} onClick={(e) => {
+                    {users.map((user , index) => (
+                        <>
+                        <div className = {`perticularUser `} key={user._id} onClick={(e) => {
                             handleUserClick(e,user._id , user.userName);
                             }}>
                                 <img  src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoYalG0iZwdwwSFMhNL4aDADjcSJFcuo31Y9OY6saF8ZG5dq3lLc8uXw0eJfUwvdwjTw&usqp=CAU"
                                     className="userImage"
                                 />
                                 <div className="perticularUserName">
-                                    {user._id + " " + user.userName}
+                                    {user.userName}
                                 </div>
                         </div>
+                                {
+                                    index !== users.length - 1  && (
+                                        <div className="DivideUserLine">
+                                        </div>
+                                    )
+                                }
+                        </>
                     ))}
                 </div>
                 <br /><br />
