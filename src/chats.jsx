@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { io } from 'socket.io-client';
 import './chats.css';
 
-
+import  cancelPng  from "./images/Group1176.png";
 
 const ChatPage = () => {
     const [socket, setSocket] = useState(null);
@@ -16,12 +16,32 @@ const ChatPage = () => {
     const [message, setMessage] = useState("");
     const [receiverUserName , setReceiverUserName] = useState(""); 
     const userChatsRef = useRef(null);
-
+    const [displayProperty ,setdisplayProperty] = useState(true);
+    
     useEffect(() => {
         if (userChatsRef.current) {
             userChatsRef.current.scrollTop = userChatsRef.current.scrollHeight;
         }
     }, [chats]);
+
+    useEffect(()=>{
+        console.log(window.screen.width);
+        const handleResize = () => {
+            if (window.innerWidth <= 767) {
+                setdisplayProperty(false);
+            } else {
+                setdisplayProperty(true);
+            }
+        };
+    
+        // Add event listener for window resize
+        window.addEventListener('resize', handleResize);
+    
+        // Cleanup by removing event listener on component unmount
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    },[]);
 
 
     useEffect(() => {
@@ -39,7 +59,6 @@ const ChatPage = () => {
                 setChats(chats => [...chats, msg]);
         });
 
-        // Handle connection errors
         newSocket.on('connect_error', (error) => {
             console.error("Socket connection error:", error);
             // You can handle the error here, e.g., display an error message to the user
@@ -48,7 +67,6 @@ const ChatPage = () => {
         // Save the socket instance to state
         setSocket(newSocket);
 
-        // Clean up function to disconnect socket when unmounting
         return () => {
             newSocket.disconnect();
         };
@@ -56,6 +74,7 @@ const ChatPage = () => {
 
     useEffect(() => {
         // Fetch users when component mounts
+        
         const fetchUsers = async () => {
             try {
                 const response = await axios.get('http://localhost:8000/user', { withCredentials: true });
@@ -118,9 +137,12 @@ const ChatPage = () => {
     return (
         <div className="mainContainer">
             <div className="Container">
-                <div className="usersContainer">
+                { displayProperty && <div className="usersContainer" 
+                // style={{display:`${displayProperty}`}}
+                >
+                    <img id="cancelPngImage" src={cancelPng} onClick={()=>(setdisplayProperty(!displayProperty))}/>
                     {users.map((user , index) => (
-                        <>
+                    <>
                         <div className = {`perticularUser `} key={user._id} onClick={(e) => {
                             handleUserClick(e,user._id , user.userName);
                             }}>
@@ -140,11 +162,18 @@ const ChatPage = () => {
                         </>
                     ))}
                 </div>
+                }
                 <br /><br />
             
                 <br /><br />
                 <div className="chatsContainer">
+                
                     <div className="receiverUser">
+                        <div className="Menue" onClick={()=>(setdisplayProperty(!displayProperty))}>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
                         <img  src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoYalG0iZwdwwSFMhNL4aDADjcSJFcuo31Y9OY6saF8ZG5dq3lLc8uXw0eJfUwvdwjTw&usqp=CAU"
                                     className="userImage"
                                 /> 

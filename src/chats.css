@@ -12,6 +12,7 @@
     height: 90vh;
     width: 80vw;
     margin: auto;
+    padding: 1rem;
     border-radius: 2rem;
     display: flex;
     background-color: #2b3045;
@@ -30,11 +31,13 @@
     box-sizing: border-box;
     width: 17vw;
     overflow: auto;
+    position: relative;
 }
 
 .chatsContainer {
     margin: 1rem;
     margin-left: 0;
+    margin-right: 0;
     display: flex;
     flex-direction: column; /* Change to column */
     flex: 1; /* Take remaining width */
@@ -164,6 +167,31 @@
 }
 
 
+.Menue{
+    width: 2.5rem;
+    height: 3rem;
+    padding: 0.25rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Menue > div {
+    height: 0.45rem;
+    border-radius: 0.25rem;
+    background: #D33852;
+}
+
+#cancelPngImage{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.4rem;
+    display: none;
+    cursor: pointer;
+}
+
 /* Hide scrollbar */
 .usersContainer::-webkit-scrollbar {
     width: 8px; /* Width of the scrollbar */
@@ -218,26 +246,44 @@
     .Container{
         height: 100%;
         width: 100%;
-        padding: 1rem;
         position: relative;
     }
     .usersContainer {
-        width: 33%; /* Set the width to 33% */
-        height: 95vh;
+        width:30vw;
+        height: 93vh;
         left: 0;
         position: absolute;
     }
+    #cancelPngImage{
+        display: block;
+    }
 }
 
-/* laptops */
 
-@media only screen and (max-width : 1023px){
+@media screen and (max-width:550px) {
+    .usersContainer{
+        width: 50vw;
+    }
+}
+
+
+@media only screen and (max-width : 1023px ) and (min-width:768px){
     .Container{
         height: 100vh;
         width: 100vw;
     }
     .usersContainer{
-        width: 25vw;
+        display: block;
+        width: 20vw;
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .Menue{
+        display: none;
+    }
+    .usersContainer{
+        display: block;
     }
 }
 
