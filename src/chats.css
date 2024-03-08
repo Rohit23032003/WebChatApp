@@ -104,6 +104,7 @@
     word-wrap: break-word; 
     color: white;
     font-size: 1.15rem;
+    position: relative;
 }
 
 .sender{
@@ -222,7 +223,12 @@
     cursor: pointer;
 } 
 
-
+.DeleteBtn{
+    position: absolute;
+    bottom: 0.25rem;
+    right: 0.2rem;
+    cursor: pointer;
+}
 
 
 /* Hide scrollbar */
