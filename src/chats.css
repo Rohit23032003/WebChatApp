@@ -12,11 +12,12 @@
     height: 90vh;
     width: 80vw;
     margin: auto;
-    padding: 1rem;
+    padding: 2rem 1rem 0.5rem  1rem;
     border-radius: 2rem;
     display: flex;
     background-color: #2b3045;
     flex-direction: row;
+    position: relative;
 }
 
 .usersContainer {
@@ -45,7 +46,7 @@
 
 .inputAndSend {
     height: 3.5rem;
-    background-color: #2b3045;
+    background-color: transparent;
     box-sizing: border-box;
     display: flex;
     align-items: center; /* Align items vertically */
@@ -191,6 +192,38 @@
     display: none;
     cursor: pointer;
 }
+
+
+ .Navbar{
+    height: 3rem;
+    position: absolute;
+    top:0rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.SignOutBtn{
+    color: white;
+    background-color:#D33852;
+    /* position: absolute; */
+    /* top: 0.5rem;
+    right: 1rem;  */
+    margin: 0.25rem;
+    padding: 0.35rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    font-family: 'Madimi One';
+    font-size: 1rem;
+    color: white;
+    background-color: #D33852;
+    cursor: pointer;
+} 
+
+
+
 
 /* Hide scrollbar */
 .usersContainer::-webkit-scrollbar {

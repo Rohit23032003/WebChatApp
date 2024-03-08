@@ -137,8 +137,11 @@ const ChatPage = () => {
     return (
         <div className="mainContainer">
             <div className="Container">
+                <div className="Navbar">
+                    <button className="SignOutBtn">ChangeDp</button>
+                    <button className="SignOutBtn">SignOut</button>
+                </div>
                 { displayProperty && <div className="usersContainer" 
-                // style={{display:`${displayProperty}`}}
                 >
                     <img id="cancelPngImage" src={cancelPng} onClick={()=>(setdisplayProperty(!displayProperty))}/>
                     {users.map((user , index) => (
