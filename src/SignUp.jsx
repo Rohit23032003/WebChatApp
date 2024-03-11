@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.css'
-// import userImage from './images/user.JPG';
-// import emailImage from './images/email.JPG';
-// import  passwordImage from './images/password.JPG';
-
+import SignUpPAgeLogo from './images/SignUpPAgeLogo.jpg'
+ 
 
 const SignUp = () => {
 
@@ -124,32 +122,43 @@ const SignUp = () => {
     return (
         < div className="container">
             <div className="SignUpLoginMainDiv">
-                <h1>{signUplogin}</h1>
-                <div className="InputValueDiv">
-                    <input id="UserName" type="text" value={userName} onChange={handleUserNameChange}
-                        placeholder="UserName" />
-                </div>
-                <div className="InputValueDiv">
+                    <img className="SignUpLogo" src={SignUpPAgeLogo}/>
+                <div  className="SignUpDetail">
+                    <h1>{signUplogin}</h1>
+                    <div className="InputValueDiv">
+                        <img width="25" height="25" src="https://img.icons8.com/ios-filled/50/user-male-circle.png" 
+                        alt="user-male-circle"/>
+                        <input id="UserName" type="text" value={userName} onChange={handleUserNameChange}
+                            placeholder="UserName" />
+                    </div>
+                    <div className="InputValueDiv">
+                        {
+                        signUplogin === "SignUp" && (
+                            <>
+                                <img width="25" height="25" src="https://img.icons8.com/ios-glyphs/30/new-post.png" alt="new-post"/>
+                                <input id="Email" type="email" value={email} onChange={handleEmailChange}
+                                placeholder="Email" />
+                            </>
+                            )
+                        }
+                    </div>
+                    <div className="InputValueDiv">
+                    <img width="25" height="25" src="https://img.icons8.com/ios-glyphs/30/password--v1.png" alt="password--v1"/>
+                        <input id="Password" type="password" onChange={handlePasswordChange} value={password}
+                            placeholder="password" />
+                    </div>
+                    <div className="BtnDiv">
+                        <button id="SignUpBtn" className={signUplogin==="SignUp" ? 'btn-blue' : 'btn-white'}
+                            onClick={handleSignUpSubmit}>SignUp</button>
+
+                        <button id="SignUpBtn" className={signUplogin === "Login" ? 'btn-blue' : 'btn-white'}
+                        onClick={handleLoginSubmit}>Login</button>
+                    </div>
                     {
-                       signUplogin === "SignUp" && (<input id="Email" type="email" value={email} onChange={handleEmailChange}
-                            placeholder="Email" />)
+                    isError  && (<div className="Error_Field">{errorMessage}</div>)
+
                     }
                 </div>
-                <div className="InputValueDiv">
-                    <input id="Password" type="password" onChange={handlePasswordChange} value={password}
-                        placeholder="password" />
-                </div>
-                <div className="BtnDiv">
-                    <button id="SignUpBtn" className={signUplogin==="SignUp" ? 'btn-blue' : 'btn-white'}
-                        onClick={handleSignUpSubmit}>SignUp</button>
-
-                    <button id="SignUpBtn" className={signUplogin === "Login" ? 'btn-blue' : 'btn-white'}
-                     onClick={handleLoginSubmit}>Login</button>
-                </div>
-                {
-                  isError  && (<div className="Error_Field">{errorMessage}</div>)
-
-                }
             </div>
         </div>
     )

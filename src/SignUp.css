@@ -5,27 +5,57 @@ body{
 
 .SignUpLoginMainDiv{
     margin: auto;
-    width: 25rem;
-    padding: 2rem;
-    height: fit-content;
-    background-color: white;
+    min-width: 65vw;
+    font-family: 'Madimi One';
+    min-height: 55vh;
+    background-color:white;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border-radius: 2rem;
+    box-sizing: border-box;
+    padding-left: 0.5rem;
+}
+
+.SignUpDetail{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     border-radius: 2rem;
+    background-color:wheat;
+    flex: 1;
+    min-height: 55vh;
 }
+
+#UserName , #Email , #Password{
+    margin-left: 0.41rem;
+    padding: 0.25rem;
+    border-radius: 0.2rem;
+    border: none;
+    outline: none;
+
+}
+
+
 
 .InputValueDiv{
     margin: 0.35rem;
+    display: flex;
+    align-items: center;
 }
 
+.SignUpLogo{
+    height: 50vh;
+    width: 30vw;
+    box-sizing: border-box;
+}
 .container{
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh; /* This ensures that the container takes the full height of the viewport */
-    background-color:blue; 
+    background-color: #2b3045; 
 }
 
 .BtnDiv{
@@ -44,13 +74,31 @@ body{
 }
 
 .btn-blue{
-    background-color: blue;
+    background-color:  #D33852;
+    color: white;
+    font-family: 'Madimi One';
+    font-size: 1rem;
+
 }
 
 .btn-white{
     background-color: none;
+    color: #D33852;
+    font-family: 'Madimi One';
+
 }
     
 .Error_Field{
-    color: red;
+    color:#D33852;
+}
+
+
+
+@media only screen and (max-width:767px){
+    .SignUpLogo{
+        display: none;
+    }
+    .SignUpLoginMainDiv{
+        padding: 1rem;
+    }
 }
