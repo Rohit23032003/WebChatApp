@@ -1,0 +1,169 @@
+.chatsContainer {
+    margin: 1rem;
+    margin-left: 0;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column; /* Change to column */
+    flex: 1; /* Take remaining width */
+}
+
+.receiverUser{
+    height: 3rem;
+    padding: 1.5rem;
+    font-family: 'Madimi One';
+    font-size: 1rem;
+    color: white;
+    border: 3px solid #434652;
+    border-bottom: 0;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    background-color: #2b3045;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.userImage{
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-left: 0.25rem;
+    border: 3px solid  #4b5ebb;
+    border: 3px solid  white;
+    box-sizing: border-box;
+    margin-right: 0.4rem;
+    border-radius: 50%;
+}
+
+.Menue{
+    width: 2.5rem;
+    height: 3rem;
+    padding: 0.25rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.Menue > div {
+    height: 0.45rem;
+    border-radius: 0.25rem;
+    background: #D33852;
+}
+
+.userChats {
+    height: 100vh;
+    border: 3px solid #434652;
+    background-color: #74767e;
+    box-sizing: border-box;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Add scrollbar when content exceeds container height */
+}
+
+.chatText{
+    font-family:'PT Sans Narrow';
+    width: 25vw;
+    margin: 0.25rem;
+    border-radius: 1rem;
+    padding: 0.45rem;
+    white-space: normal;
+    word-wrap: break-word; 
+    color: white;
+    font-size: 1.15rem;
+    position: relative;
+}
+
+.sender{
+    align-self: flex-end;
+    background-color: #4b5ebb;
+
+}
+
+.receiver{
+    background-color:#24283a;
+    align-self: flex-start;
+}
+
+.DeleteBtn{
+    position: absolute;
+    bottom: 0.25rem;
+    right: 0.2rem;
+    cursor: pointer;
+}
+
+
+.inputAndSend {
+    height: 3.5rem;
+    background-color: transparent;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center; /* Align items vertically */
+    justify-content: flex-end; /* Align items horizontally at the end */
+    padding: 0.5rem; /* Adjust padding as needed */
+}
+
+.inputAndSend #MessageInputFields {
+    flex: 1; /* Take remaining width */
+    margin-right: 0.5rem; /* Add some space between input and button */
+}
+
+
+
+#MessageInputFields{
+    height: 2rem;
+    border: 2px solid #5a5f75;
+    outline: none;
+    border-radius: 0.35rem;
+    box-sizing: border-box;
+    padding: 0.5rem;    
+}
+
+#SendMessageBtn{
+    padding: 0.35rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    font-family: 'Madimi One';
+    font-size: 1rem;
+    color: white;
+    background-color: #D33852;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+
+.userChats::-webkit-scrollbar {
+    width: 0.51rem; /* Width of the scrollbar */
+    border-radius: 50%; /* Border radius of the scrollbar */
+}
+
+/* Track */
+.userChats::-webkit-scrollbar-track {
+    background:transparent; /* Color of the scrollbar track */
+}
+
+/* Handle */
+.userChats::-webkit-scrollbar-thumb {
+    background: #323851; /* Color of the scrollbar handle */
+    border-radius: 2px; /* Border radius of the scrollbar handle */
+}
+
+/* Handle on hover */
+.userChats::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
+
+@media only screen and (min-width: 768px){
+    .Menue{
+        display: none;
+    }
+    /* .usersContainer{
+        display: block;
+    } */
+}

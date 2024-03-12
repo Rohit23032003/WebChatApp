@@ -1,0 +1,116 @@
+.usersContainer {
+    font-family: 'Madimi One';
+    font-size: 1rem;
+    color: white;
+    margin: 1rem;
+    padding: 0.25rem;
+    background-color: #74767e;
+    border-radius: 0.5rem;
+    border: 3px solid #434652;
+    box-sizing: border-box;
+    width: 17vw;
+    overflow: auto;
+    position: relative;
+    z-index: 1;
+}
+
+#cancelPngImage{
+    position: absolute;
+    top: 0.5rem;
+    right: 0.4rem;
+    display: none;
+    cursor: pointer;
+}
+
+.perticularUser{
+    /* border: 2px solid red; */
+    margin: 0.5rem 0.1rem 0.5rem 0.1rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 2.5rem;
+    display: flex;
+    padding: 0.75rem;
+    align-items: center;
+    cursor: pointer;
+}
+
+.userImage{
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-left: 0.25rem;
+    border: 3px solid  #4b5ebb;
+    border: 3px solid  white;
+    box-sizing: border-box;
+    margin-right: 0.4rem;
+    border-radius: 50%;
+}
+
+.perticularUserName {
+    overflow: hidden;
+    background: transparent;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.DivideUserLine{
+    border-bottom: 1.25px solid #2b3045;
+}
+
+/* Hide scrollbar */
+.usersContainer::-webkit-scrollbar {
+    width: 8px; /* Width of the scrollbar */
+    border-radius: 50%; /* Border radius of the scrollbar */
+}
+
+/* Track */
+.usersContainer::-webkit-scrollbar-track {
+    background:transparent; /* Color of the scrollbar track */
+}
+
+/* Handle */
+.usersContainer::-webkit-scrollbar-thumb {
+    background: #323851; /* Color of the scrollbar handle */
+    border-radius: 2px; /* Border radius of the scrollbar handle */
+}
+
+/* Handle on hover */
+.usersContainer::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
+
+
+@media only screen and (max-width : 767px){
+
+    .usersContainer {
+        width:30vw;
+        height: 93vh;
+        left: 0;
+        position: absolute;
+    }
+    #cancelPngImage{
+        display: block;
+    }
+}
+
+
+@media screen and (max-width:550px) {
+    .usersContainer{
+        width: 50vw;
+    }
+}
+
+
+@media only screen and (max-width : 1023px ) and (min-width:768px){
+    .usersContainer{
+        display: block;
+        width: 20vw;
+    }
+}
+
+@media only screen and (min-width: 768px){
+
+    .usersContainer{
+        display: block;
+    }
+}
