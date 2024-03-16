@@ -45,11 +45,9 @@ const SignUp = () => {
             setPassword("");
             setUserName("");
             try {
-                const response = await axios.post('http://localhost:8000/user', user, {
+                const response = await axios.post('https://webchatapp-backend.onrender.com/user', user, {
                     withCredentials: true
                 });
-                console.log(response);
-                console.log(response.data.newUser._id);
                 if(response.data.success){
                     const id = response.data.newUser._id;
                     navigate(`/login/:${id}`,{replace:true});
@@ -80,10 +78,9 @@ const SignUp = () => {
         setPassword("");
         setUserName("");
         try {
-            const response = await axios.post('http://localhost:8000/user/login', user, {
+            const response = await axios.post('https://webchatapp-backend.onrender.com/user/login', user, {
                 withCredentials: true
             });
-            console.log(response.data);
             if (response.data.success) {
                 const id = response.data.newUser._id;
                 navigate(`/login/:${id}`,{replace:true});
@@ -103,10 +100,9 @@ const SignUp = () => {
     useEffect(() => {
         const apiCall = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/user/login', {
+                const response = await axios.get('https://webchatapp-backend.onrender.com/user/login', {
                     withCredentials: true
                 })
-                console.log(response.data);
                 if (response.data.success) {
                     const id = response.data.user._id;
                     navigate(`/login/:${id}`,{replace:true});

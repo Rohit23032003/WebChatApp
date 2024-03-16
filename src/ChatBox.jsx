@@ -22,7 +22,7 @@ const ChatBox = ({receiverId , senderId ,socket , receiverUserProfile ,receiverU
         const fetchChats = async () => {
             try {
                 if (!receiverId) return; // Skip if receiverId is not set
-                const response = await axios.post('http://localhost:8000/user/personalchats', 
+                const response = await axios.post('https://webchatapp-backend.onrender.com/user/personalchats', 
                 { senderId, receiverId }, { withCredentials: true });
                 if (response.data.success) {
                     setChats(response.data.chats);
@@ -38,17 +38,16 @@ const ChatBox = ({receiverId , senderId ,socket , receiverUserProfile ,receiverU
         try {
             if (!message.trim()) return; // Skip if message is empty
             const chat = { senderId, receiverId, message };
-            const response = await axios.post(`http://localhost:8000/user/chats`,
+            setMessage(""); // Clear message input
+            const response = await axios.post(`https://webchatapp-backend.onrender.com/user/chats`,
              chat, { withCredentials: true });
             if (response.data.success) {
                 const msg = response.data.newChat;
                 setChats(chats => [...chats, msg]);
                if(msg.senderId !== msg.receiverId) {
-                // console.log(msg.senderId , " " , msg.re);
                     socket.emit('sendingMessage', {msg});
                }
             }
-            setMessage(""); // Clear message input
         } catch (error) {
             console.error("Error sending chat:", error);
         }
@@ -58,11 +57,7 @@ const ChatBox = ({receiverId , senderId ,socket , receiverUserProfile ,receiverU
         e.preventDefault();
         setChats((chats) => (chats.filter((chat)=>(chat._id!==id))));
         try {
-                console.log(id);
-                await axios.delete(`http://localhost:8000/user/chats/:${id}`)
-                .then((response)=>{
-                    console.log(response);
-                })
+                await axios.delete(`https://webchatapp-backend.onrender.com/user/chats/:${id}`)
             } catch (error) {  
                 console.log(error);          
         }

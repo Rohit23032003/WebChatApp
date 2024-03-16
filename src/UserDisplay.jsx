@@ -16,8 +16,7 @@ const UserDisplay = ({users , setUsers , setReceiverUserProfile ,setReceiverId ,
         
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/user', { withCredentials: true });
-                console.log("users are",response.data.users);
+                const response = await axios.get('https://webchatapp-backend.onrender.com/user', { withCredentials: true });
                 setUsers(response.data.users);
             } catch (error) {
                 console.error("Error fetching users:", error);
@@ -30,11 +29,9 @@ const UserDisplay = ({users , setUsers , setReceiverUserProfile ,setReceiverId ,
     {
         e.preventDefault();
         setReceiverId(id)
-        console.log(name);
         setReceiverUserName(name);
         const receiveId = id;
         const sendId = senderId;
-        console.log("receiveId ", receiveId , " sendId " , sendId);
         socket.emit('setReceiverId', {receiveId , sendId}); 
     }
 
@@ -50,7 +47,6 @@ const UserDisplay = ({users , setUsers , setReceiverUserProfile ,setReceiverId ,
                                 }
                                 handleUserClick(e,user._id , user.userName);
                             }}>{
-                                console.log(user)
                             }
                                 <img  src={ user.userProfile || imgUrl}
                                     className="userImage"
@@ -72,3 +68,4 @@ const UserDisplay = ({users , setUsers , setReceiverUserProfile ,setReceiverId ,
 }
 
 export default UserDisplay;
+

@@ -159,11 +159,14 @@
     background: #555; /* Color of the scrollbar handle on hover */
 }
 
+@media screen  and (max-width:768px){
+    .chatText{
+        width:50vw;
+    }
+}
+
 @media only screen and (min-width: 768px){
     .Menue{
         display: none;
     }
-    /* .usersContainer{
-        display: block;
-    } */
 }

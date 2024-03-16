@@ -25,7 +25,6 @@ const ChatPage = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        console.log(window.screen.width);
         const handleResize = () => {
             if (window.innerWidth <= 767) {
                 setdisplayProperty(false);
@@ -46,11 +45,10 @@ const ChatPage = () => {
 
     useEffect(() => {
         // Initialize socket connection
-        const newSocket = io('http://localhost:8000');
+        const newSocket = io('https://webchatapp-backend.onrender.com');
 
         // Set up socket event listeners
         newSocket.on('connect', () => {
-            console.log("connected", newSocket.id);
             // Emit setUserId only once when the user connects
             newSocket.emit('setUserId', senderId);
         });
@@ -75,9 +73,8 @@ const ChatPage = () => {
     const SignOutFunc = async(e) =>{
         e.preventDefault();
         try {
-            const res = await axios.delete('http://localhost:8000/user',
+            const res = await axios.delete('https://webchatapp-backend.onrender.com/user',
             {withCredentials:true});
-            console.log(res);
         } catch (error) {
             console.log(error);
         }
@@ -95,10 +92,9 @@ const ChatPage = () => {
             const formData = new FormData();
             formData.append('UserFile', file);
             formData.append('id', senderId);
-            const response = await axios.post('http://localhost:8000/user/profile'
+            const response = await axios.post('https://webchatapp-backend.onrender.com/user/profile'
             ,formData,
             {withCredentials:true});
-            console.log(response);
             if(response.data.success){
                 const updatedUsers = users.map(user => {
                     if (user._id === senderId) {
@@ -151,3 +147,5 @@ const ChatPage = () => {
 };
 
 export default ChatPage;
+
+
