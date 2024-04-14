@@ -7,6 +7,7 @@ import SignUpPAgeLogo from './images/SignUpPAgeLogo.jpg'
 import ProgressBar from "./ProgressBar";
 
 const SignUp = () => {
+
     const [isLoading, setIsLoading] = useState(false);
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
@@ -128,7 +129,7 @@ const SignUp = () => {
 
 
     return (
-        < div className="container">
+        < div  className="container">
         { isLoading &&<ProgressBar/>}
             <div className="SignUpLoginMainDiv">
                     <img className="SignUpLogo" src={SignUpPAgeLogo}/>

@@ -7,6 +7,8 @@ import cancelImg  from './images/Group1176.png';
  const  AllUsers = (props) => {
     const [Users , setUsers] = useState([]);
     const [CopyUserList , setCopyUserList] = useState([...Users]);
+
+
     useEffect(()=>{
         const fetchAllUsers = async()=>{
                 try {
@@ -60,7 +62,7 @@ import cancelImg  from './images/Group1176.png';
         {
             CopyUserList.map((user)=>{
                 return (
-                    <div className='usersDiv'>
+                    <div key={user._id} className='usersDiv'>
                         <img className="userPic" src = {user.userProfile}  alt = ''/>
                         <div className='username'> {user.userName}</div>
                         <img className='sendBtn' src={sendBtn} 

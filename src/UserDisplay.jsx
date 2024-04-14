@@ -38,8 +38,8 @@ const UserDisplay = ({users , setUsers , setReceiverUserProfile ,setReceiverId ,
         <div className="usersContainer">
                     <img id="cancelPngImage" src={cancelPng} onClick={()=>(setdisplayProperty(!displayProperty))}/>
                     {users.map((user , index) => (
-                    <>
-                        <div className = {`perticularUser `} key={user.senderId} onClick={(e) => {
+                    <div key={user.senderId}>
+                        <div className = {`perticularUser `}  onClick={(e) => {
                                 if(user.userProfile.length>0){
                                     setReceiverUserProfile(user.userProfile);
                                 }
@@ -59,7 +59,7 @@ const UserDisplay = ({users , setUsers , setReceiverUserProfile ,setReceiverId ,
                                         </div>
                                     )
                                 }
-                        </>
+                    </div>
                     ))}
         </div>
     )

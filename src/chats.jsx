@@ -111,7 +111,8 @@ const ChatPage = () => {
     };
   
     return (
-            <div className="Container">
+            <div
+            className="Container">
                 <div className="Navbar">
                     <button className="AllUser" 
                         onClick={(e)=>{setAllUserModelBox(!AllUserModelBox)}}
