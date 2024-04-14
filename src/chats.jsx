@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import UserDisplay from './UserDisplay';
 import ChatBox from "./ChatBox";
 import AllUsers from "./AllUsers";
+const MainUrl ="https://webchatapp-backend.onrender.com/" 
 
 const ChatPage = () => {
 
@@ -46,7 +47,7 @@ const ChatPage = () => {
 
     useEffect(() => {
         // Initialize socket connection
-        const newSocket = io('http://localhost:8000');
+        const newSocket = io(`${MainUrl}`);
 
         // Set up socket event listeners
         newSocket.on('connect', () => {
@@ -74,7 +75,7 @@ const ChatPage = () => {
     const SignOutFunc = async(e) =>{
         e.preventDefault();
         try {
-            const res = await axios.delete('http://localhost:8000/user',
+            const res = await axios.delete(`${MainUrl}user`,
             {withCredentials:true});
         } catch (error) {
             console.log(error);
@@ -93,7 +94,7 @@ const ChatPage = () => {
             const formData = new FormData();
             formData.append('UserFile', file);
             formData.append('id', senderId);
-            const response = await axios.post('http://localhost:8000/user/profile'
+            const response = await axios.post(`${MainUrl}user/profile`
             ,formData,
             {withCredentials:true});
             if(response.data.success){

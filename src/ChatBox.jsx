@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect , useState  , useRef} from "react";
 import './ChatBox.css';
 import ProgressBar from "./ProgressBar";
+const MainUrl ="https://webchatapp-backend.onrender.com/" 
 
 const imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoYalG0iZwdwwSFMhNL4aDADjcSJFcuo31Y9OY6saF8ZG5dq3lLc8uXw0eJfUwvdwjTw&usqp=CAU"
 
@@ -26,7 +27,7 @@ const ChatBox = ({receiverId , senderId ,socket , receiverUserProfile ,receiverU
             setIsLoading(true);
             try {
                 if (!receiverId) return; // Skip if receiverId is not set
-                const response = await axios.post('http://localhost:8000/user/personalchats', 
+                const response = await axios.post(`${MainUrl}user/personalchats`, 
                 { senderId, receiverId }, { withCredentials: true });
                 if (response.data.success) {
                     setChats(response.data.chats);
@@ -44,7 +45,7 @@ const ChatBox = ({receiverId , senderId ,socket , receiverUserProfile ,receiverU
             if (!message.trim()) return; // Skip if message is empty
             const chat = { senderId, receiverId, message };
             setMessage(""); // Clear message input
-            const response = await axios.post(`http://localhost:8000/user/chats`,
+            const response = await axios.post(`${MainUrl}user/chats`,
              chat, { withCredentials: true });
             if (response.data.success) {
                 const msg = response.data.newChat;
@@ -62,7 +63,7 @@ const ChatBox = ({receiverId , senderId ,socket , receiverUserProfile ,receiverU
         e.preventDefault();
         setChats((chats) => (chats.filter((chat)=>(chat._id!==id))));
         try {
-                await axios.delete(`http://localhost:8000/user/chats/:${id}`)
+                await axios.delete(`${MainUrl}user/chats/:${id}`)
             } catch (error) {  
                 console.log(error);          
         }

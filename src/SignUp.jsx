@@ -3,9 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.css'
 import SignUpPAgeLogo from './images/SignUpPAgeLogo.jpg'
-// http://localhost:8000
 import ProgressBar from "./ProgressBar";
-
+const MainUrl ="https://webchatapp-backend.onrender.com/" 
 const SignUp = () => {
 
     const [isLoading, setIsLoading] = useState(false);
@@ -48,7 +47,7 @@ const SignUp = () => {
             setUserName("");
             setIsLoading(true);
             try {
-                const response = await axios.post('http://localhost:8000/user', user, {
+                const response = await axios.post(`${MainUrl}user`, user, {
                     withCredentials: true
                 });
                 if(response.data.success){
@@ -87,16 +86,19 @@ const SignUp = () => {
         setIsLoading(true);
 
         try {
-            const response = await axios.post('http://localhost:8000/user/login', user, {
+            const response = await axios.post(`${MainUrl}user/login`, user, {
                 withCredentials: true
             });
             if (response.data.success) {
                 const id = response.data.newUser._id;
                 navigate(`/login/:${id}`,{replace:true});
             }
+            else{            
+                setIsError(true);
+                setErrorMessage(response.data.message);
+            }
         } catch (error) {
             setIsError(true);
-            console.log(error);
             setErrorMessage(error.message);
         }finally {
             setIsLoading(false);
@@ -113,7 +115,7 @@ const SignUp = () => {
     useEffect(() => {
         const apiCall = async () => {
             try {
-                const response = await axios.get('http://localhost:8000/user/login', {
+                const response = await axios.get(`${MainUrl}user/login`, {
                     withCredentials: true
                 })
                 if (response.data.success) {
@@ -121,7 +123,7 @@ const SignUp = () => {
                     navigate(`/login/:${id}`,{replace:true});
                 }
             } catch (error) {
-                console.log(error);
+                // console.log(error);
             }
         };
         apiCall();

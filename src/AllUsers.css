@@ -11,11 +11,11 @@
     z-index: 1; /* Set the z-index to 1 */
 }
 
-.AllUserContainer{
+.AllUserContainer {
     width: 30vw;
     height: 60vh;
     flex-shrink: 0;
-    overflow: auto;
+    overflow-y: auto;
     border-radius: 0.5rem;
     border: 1px solid #EBEBEB;
     background: #FFF;
@@ -25,7 +25,11 @@
     padding: 1.56rem;
     font-size: 1.5rem;
     box-sizing: border-box;
-}
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #323851 transparent; /* For Firefox */
+  }
+  
+
 .cancelImg{
     position: absolute;
     top: 0.15rem;
@@ -82,3 +86,27 @@
     }   
 }
 
+
+
+.AllUserContainer::-webkit-scrollbar {
+    width: 0.51rem; /* Width of the scrollbar */
+  }
+  
+  /* Track */
+  .AllUserContainer::-webkit-scrollbar-track {
+    background: transparent; /* Color of the scrollbar track */
+  }
+  
+  /* Handle */
+  .AllUserContainer::-webkit-scrollbar-thumb {
+    background: #323851; /* Color of the scrollbar handle */
+    border-radius: 2px; /* Border radius of the scrollbar handle */
+  }
+  
+  /* Handle on hover */
+  .AllUserContainer::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+  }
+
+
+  

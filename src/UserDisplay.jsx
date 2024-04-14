@@ -3,6 +3,7 @@ import  cancelPng  from "./images/Group1176.png";
 import axios from 'axios';
 import { useEffect , useState } from 'react';
 import { useParams } from "react-router-dom";
+const MainUrl ="https://webchatapp-backend.onrender.com/" 
 
 
 const imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQoYalG0iZwdwwSFMhNL4aDADjcSJFcuo31Y9OY6saF8ZG5dq3lLc8uXw0eJfUwvdwjTw&usqp=CAU"
@@ -14,7 +15,7 @@ const UserDisplay = ({users , setUsers , setReceiverUserProfile ,setReceiverId ,
         
         const fetchUsers = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/user/ConnectedUser/:${senderId}`, { withCredentials: true });
+                const response = await axios.get(`${MainUrl}user/ConnectedUser/:${senderId}`, { withCredentials: true });
                 setUsers(response.data.users.connections);
             } catch (error) {
                 console.error("Error fetching users:", error);

@@ -3,6 +3,7 @@ import './AllUsers.css'
 import  axios  from 'axios';
 import sendBtn from './images/sendBtn.png';
 import cancelImg  from './images/Group1176.png';
+const MainUrl ="https://webchatapp-backend.onrender.com/" 
 
  const  AllUsers = (props) => {
     const [Users , setUsers] = useState([]);
@@ -12,7 +13,7 @@ import cancelImg  from './images/Group1176.png';
     useEffect(()=>{
         const fetchAllUsers = async()=>{
                 try {
-                    const response = await axios.get(`http://localhost:8000/user`, { withCredentials: true });
+                    const response = await axios.get(`${MainUrl}user`, { withCredentials: true });
                     setUsers(response.data.users);
                     setCopyUserList(response.data.users);
                 } catch (error) {
@@ -38,7 +39,7 @@ import cancelImg  from './images/Group1176.png';
             }
             props.setUsers([...props.SenderUser , {...newUser}]);
                 try {
-                    const res = await axios.post(`http://localhost:8000/user/RequestAccept`,{
+                    const res = await axios.post(`${MainUrl}user/RequestAccept`,{
                         currentUser:props.SenderUser[0].senderId,
                         ...newUser
                     },{withCredentials:true});
