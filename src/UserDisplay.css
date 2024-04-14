@@ -3,6 +3,7 @@
     font-size: 1rem;
     color: white;
     margin: 1rem;
+    margin-left: 0;
     padding: 0.25rem;
     background-color: #74767e;
     border-radius: 0.5rem;
@@ -27,7 +28,7 @@
     margin: 0.5rem 0.1rem 0.5rem 0.1rem;
     box-sizing: border-box;
     overflow: hidden;
-    height: 2.5rem;
+    height: 3rem;
     display: flex;
     padding: 0.75rem;
     align-items: center;
@@ -35,8 +36,8 @@
 }
 
 .userImage{
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 3rem;
+    width: 3rem;
     margin-left: 0.25rem;
     border: 3px solid  #4b5ebb;
     border: 3px solid  white;
@@ -47,6 +48,7 @@
 
 .perticularUserName {
     overflow: hidden;
+    font-size: 1.5rem;
     background: transparent;
     white-space: nowrap;
     text-overflow: ellipsis;

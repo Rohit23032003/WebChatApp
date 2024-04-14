@@ -31,10 +31,11 @@ body{
 #UserName , #Email , #Password{
     margin-left: 0.41rem;
     padding: 0.25rem;
-    border-radius: 0.2rem;
+    height: 1.5rem;
+    width: 100%;
+    border-radius: 0.5rem;
     border: none;
     outline: none;
-
 }
 
 
@@ -102,3 +103,4 @@ body{
         padding: 1rem;
     }
 }
+

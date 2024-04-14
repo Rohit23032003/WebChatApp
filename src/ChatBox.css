@@ -4,7 +4,8 @@
     margin-right: 0;
     display: flex;
     flex-direction: column; /* Change to column */
-    flex: 1; /* Take remaining width */
+    flex: 1; 
+    /* Take remaining width */
 }
 
 .receiverUser{
@@ -53,6 +54,7 @@
 }
 
 .userChats {
+    position: relative;
     height: 100vh;
     border: 3px solid #434652;
     background-color: #74767e;
@@ -89,6 +91,7 @@
     align-self: flex-start;
 }
 
+
 .DeleteBtn{
     position: absolute;
     bottom: 0.25rem;
@@ -115,21 +118,21 @@
 
 
 #MessageInputFields{
-    height: 2rem;
+    height: 3rem;
     border: 2px solid #5a5f75;
     outline: none;
     border-radius: 0.35rem;
     box-sizing: border-box;
     padding: 0.5rem;    
+    font-size: 1.25rem;
 }
 
 #SendMessageBtn{
     padding: 0.35rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     border-radius: 0.25rem;
     border: none;
     font-family: 'Madimi One';
-    font-size: 1rem;
     color: white;
     background-color: #D33852;
     color: #fff;

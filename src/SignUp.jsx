@@ -3,21 +3,21 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './SignUp.css'
 import SignUpPAgeLogo from './images/SignUpPAgeLogo.jpg'
- 
+// http://localhost:8000
+import ProgressBar from "./ProgressBar";
 
 const SignUp = () => {
-
+    const [isLoading, setIsLoading] = useState(false);
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [signUplogin , setSignUplogin] = useState("SignUp")
     const [isError , setIsError] = useState(false);
     const [errorMessage , setErrorMessage] = useState('')
-
+    const [isSigUp , setIsSignUp] = useState(true);
+    const [isLogin , setISLogin] = useState(false);
 
     const navigate = useNavigate();
-
-
     const handleUserNameChange = (e) => {
         e.preventDefault();
         setUserName(e.target.value.trim());
@@ -27,7 +27,7 @@ const SignUp = () => {
         e.preventDefault();
         setEmail(e.target.value.trim());
     }
-
+    
     const handlePasswordChange = (e) => {
         e.preventDefault();
         setPassword(e.target.value.trim());
@@ -36,6 +36,7 @@ const SignUp = () => {
     const handleSignUpSubmit = async (e) => {
         e.preventDefault();
         setSignUplogin("SignUp");
+        setErrorMessage("");
         if(userName.length>0 && password.length>0 && email.length > 0){
             setIsError(false);
             const user = {
@@ -44,8 +45,9 @@ const SignUp = () => {
             setEmail("");
             setPassword("");
             setUserName("");
+            setIsLoading(true);
             try {
-                const response = await axios.post('https://webchatapp-backend.onrender.com/user', user, {
+                const response = await axios.post('http://localhost:8000/user', user, {
                     withCredentials: true
                 });
                 if(response.data.success){
@@ -57,28 +59,34 @@ const SignUp = () => {
                 setErrorMessage(error.response.data.message);
                 console.log("error message is" , error);    
 
-            }
+            }finally {
+                setIsLoading(false);
+              }
         }
-        else {
+        else if(isSigUp === true){
             setIsError(true);
             setErrorMessage('Please fill all the fields');
         }
+        setIsSignUp(true);
+        setISLogin(false);
     }
 
    const handleLoginSubmit = async (e) => {
     e.preventDefault();
     setSignUplogin("Login");
+    setErrorMessage("");
     if(userName.length>0 && password.length>0){
         setIsError(false);
-
         const user = {
             userName, password 
         }
         setEmail("");
         setPassword("");
-        setUserName("");
+        setUserName("");          
+        setIsLoading(true);
+
         try {
-            const response = await axios.post('https://webchatapp-backend.onrender.com/user/login', user, {
+            const response = await axios.post('http://localhost:8000/user/login', user, {
                 withCredentials: true
             });
             if (response.data.success) {
@@ -87,20 +95,24 @@ const SignUp = () => {
             }
         } catch (error) {
             setIsError(true);
-            setErrorMessage(error.response.data.message);
             console.log(error);
+            setErrorMessage(error.message);
+        }finally {
+            setIsLoading(false);
         }
     }
-    else{
-        setIsError(true)
-        setErrorMessage('Please fill all the fields');
+    else if(isLogin === true){
+      setIsError(true)
+      setErrorMessage('Please fill all the fields');
     }
+    setISLogin(true);
+    setIsSignUp(false);
    }
 
     useEffect(() => {
         const apiCall = async () => {
             try {
-                const response = await axios.get('https://webchatapp-backend.onrender.com/user/login', {
+                const response = await axios.get('http://localhost:8000/user/login', {
                     withCredentials: true
                 })
                 if (response.data.success) {
@@ -108,7 +120,7 @@ const SignUp = () => {
                     navigate(`/login/:${id}`,{replace:true});
                 }
             } catch (error) {
-                console.log(error.response.data.success);
+                console.log(error);
             }
         };
         apiCall();
@@ -117,6 +129,7 @@ const SignUp = () => {
 
     return (
         < div className="container">
+        { isLoading &&<ProgressBar/>}
             <div className="SignUpLoginMainDiv">
                     <img className="SignUpLogo" src={SignUpPAgeLogo}/>
                 <div  className="SignUpDetail">
@@ -152,7 +165,6 @@ const SignUp = () => {
                     </div>
                     {
                     isError  && (<div className="Error_Field">{errorMessage}</div>)
-
                     }
                 </div>
             </div>

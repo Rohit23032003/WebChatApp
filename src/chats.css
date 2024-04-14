@@ -1,25 +1,17 @@
-.mainContainer{
-    height: 100vh;
-    width: 100vw;
-    background-color: #323851;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 
 .Container {
-    height: 90vh;
-    width: 80vw;
+    height: 100vh;
+    width:100%;
+    box-sizing: border-box;
     margin: auto;
-    padding: 2rem 1rem 0.5rem  1rem;
-    border-radius: 2rem;
+    padding-top: 2rem ;
+    padding-left: 1rem;
+    padding-right: 1rem;
     display: flex;
     background-color: #2b3045;
     flex-direction: row;
     position: relative;
 }
-
 
  .Navbar{
     height: 3rem;
@@ -31,12 +23,9 @@
     width: fit-content;
 }
 
-.SignOutBtn , .ChangeDp{
+.SignOutBtn , .ChangeDp , .AllUser{
     color: white;
     background-color:#D33852;
-    /* position: absolute; */
-    /* top: 0.5rem;
-    right: 1rem;  */
     margin: 0.25rem;
     padding: 0.35rem;
     font-size: 1rem;

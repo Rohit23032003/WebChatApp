@@ -6,7 +6,7 @@ import './chats.css';
 import { useNavigate } from 'react-router-dom';
 import UserDisplay from './UserDisplay';
 import ChatBox from "./ChatBox";
-
+import AllUsers from "./AllUsers";
 
 const ChatPage = () => {
 
@@ -20,6 +20,7 @@ const ChatPage = () => {
     const [displayProperty ,setdisplayProperty] = useState(true);
     const fileInputRef = useRef(null);
     const [receiverUserProfile , setReceiverUserProfile] = useState("");
+    const [AllUserModelBox , setAllUserModelBox] = useState(false);
 
 
     const navigate = useNavigate();
@@ -45,7 +46,7 @@ const ChatPage = () => {
 
     useEffect(() => {
         // Initialize socket connection
-        const newSocket = io('https://webchatapp-backend.onrender.com');
+        const newSocket = io('http://localhost:8000');
 
         // Set up socket event listeners
         newSocket.on('connect', () => {
@@ -73,7 +74,7 @@ const ChatPage = () => {
     const SignOutFunc = async(e) =>{
         e.preventDefault();
         try {
-            const res = await axios.delete('https://webchatapp-backend.onrender.com/user',
+            const res = await axios.delete('http://localhost:8000/user',
             {withCredentials:true});
         } catch (error) {
             console.log(error);
@@ -87,17 +88,17 @@ const ChatPage = () => {
   
 
     const handleFileChange = async(event) => {
-      const file = event.target.files[0];
+        const file = event.target.files[0];
         try {
             const formData = new FormData();
             formData.append('UserFile', file);
             formData.append('id', senderId);
-            const response = await axios.post('https://webchatapp-backend.onrender.com/user/profile'
+            const response = await axios.post('http://localhost:8000/user/profile'
             ,formData,
             {withCredentials:true});
             if(response.data.success){
                 const updatedUsers = users.map(user => {
-                    if (user._id === senderId) {
+                    if (user.senderId === senderId){
                       return { ...user, userProfile:response.data.userProfile};
                     }
                     return user;
@@ -110,9 +111,11 @@ const ChatPage = () => {
     };
   
     return (
-        <div className="mainContainer">
             <div className="Container">
                 <div className="Navbar">
+                    <button className="AllUser" 
+                        onClick={(e)=>{setAllUserModelBox(!AllUserModelBox)}}
+                    >AllUsers</button>
                     <button className="ChangeDp" onClick={handleButtonClick}>Change DP</button>
                     <input 
                         type="file" 
@@ -141,8 +144,13 @@ const ChatPage = () => {
                     setdisplayProperty ={setdisplayProperty} 
                     displayProperty ={displayProperty} 
                 />
+               {
+                AllUserModelBox&&<AllUsers  setAllUserModelBox = {setAllUserModelBox}
+                    SenderUser = {users} setUsers={setUsers}  
+                />
+               }
+
             </div>
-        </div>
     );
 };
 
